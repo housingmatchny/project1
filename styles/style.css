@@ -55,6 +55,13 @@ body {
   .card.turned .face-down {
     transform: rotateY(180deg);
   }
+
+  .face-up {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
   
   .card .face-down,
   .card .face-up {
@@ -108,7 +115,7 @@ body {
     text-align: center;
   }
   
-  p {
+  #instructions {
     /* margin: 5rem; */
     margin: 0;
     /* margin-right: 0; */
@@ -116,11 +123,14 @@ body {
     /* display: flex;
     justify-content: center; */
     width: 82rem;
+  }
+  
+  p {
     color: rgba(55, 72, 149, 0.605);
     font-family: Whyteinktraptrial, sans-serif;
     font-weight: bolder;
     font-size: 3rem;
-
+  
     text-align: center;
   }
 
@@ -143,6 +153,10 @@ body {
     height: 30vh;
     justify-content: space-around;
     margin-bottom: 30px;
+  }
+
+  .card p {
+    margin-top: auto;
   }
 
   /*#card-container {
