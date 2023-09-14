@@ -1506,3 +1506,5 @@ const radicalsRaw =
       strokeCount: 17
     }
   ]
+
+  // module.exports = radicalsRaw
