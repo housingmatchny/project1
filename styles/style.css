@@ -116,7 +116,7 @@ body {
     /* text-align: center; */
   }
 
-  .button {
+  .restart-button {
     background-color: #b62089; 
     border: none;
     color: white;
@@ -124,7 +124,8 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1.6rem;
+    font-size: 4rem;
+    margin-top: 2rem;
   }
 
   /*#card-container {
