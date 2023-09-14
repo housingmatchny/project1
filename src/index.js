@@ -2,88 +2,67 @@
 
 const data = 
 [
-    {
-      id: 1,
-      radical: "一",
-      pinyin: "yī",
-      english: "one",
-      strokeCount: 1
-    },
-    {
-      id: 2,
-      radical: "丨",
-      pinyin: "shù",
-      english: "line",
-      strokeCount: 1
-    },
-    {
-      id: 3,
-      radical: "丶",
-      pinyin: "diǎn",
-      english: "dot",
-      strokeCount: 1
-    },
-    {
-      id: 4,
-      radical: "丿",
-      pinyin: "piě",
-      english: "slash",
-      strokeCount: 1
-    },
-    {
-      id: 5,
-      radical: "乙",
-      pinyin: "yǐ",
-      english: "second",
-      strokeCount: 1
-    },
-    {
-      id: 6,
-      radical: "亅",
-      pinyin: "gōu",
-      english: "hook",
-      strokeCount: 1
-    },
+  {
+    id: 1,
+    radical: "一",
+    pinyin: "yī",
+    english: "one",
+    strokeCount: 1
+  },
+  {
+    id: 2,
+    radical: "丨",
+    pinyin: "shù",
+    english: "line",
+    strokeCount: 1
+  },
+  {
+    id: 3,
+    radical: "丶",
+    pinyin: "diǎn",
+    english: "dot",
+    strokeCount: 1
+  },
+  {
+    id: 4,
+    radical: "丿",
+    pinyin: "piě",
+    english: "slash",
+    strokeCount: 1
+  },
+  {
+    id: 5,
+    radical: "乙",
+    pinyin: "yǐ",
+    english: "second",
+    strokeCount: 1
+  },
+  {
+    id: 6,
+    radical: "亅",
+    pinyin: "gōu",
+    english: "hook",
+    strokeCount: 1
+  }
 ]
 
-/*
-
-memoryGame.shuffleCards(); [{}, {}, {}...]
-
-firstThree [
-  {id: 1} unique id
-  {id: 2}
-  {id: 3}
-]
-
-let tempArr = [];
-
-for (let i = 0: i < data.length; i++) {
-  if (tempArr.)
-}
-
-
-newArrrOfObjects = arrOfObjects.map(object => {
-  const secondThree = 
-
-  if ()
-})
-*/
-
-const memoryGame = new MemoryGame(data);//triggers game constructor
+const memoryGame = new MemoryGame(data);//triggers game constructor; selects first 6 cards of shuffled deck
 //creates instance of game, passing in data for the cards
 //class is the blueprint; new keyword calls the blueprint to be implemented; the instances are the new houses 
 
-// console.log(`This is memoryGame ${memoryGame}`, memoryGame);
 
+
+//Executes immediately after a page has been loaded
 window.onload = () => {
   let boardHTML = '';
-  let filteredPrompt;
+  let filteredPrompt = '';
+  let score = 0;
 
-  //shuffleCards
-  memoryGame.shuffleCards();
+//shuffleCards
+memoryGame.shuffleCards();
 
-  memoryGame.cards.forEach((el) => {
+//sets up cards and text on cards
+  memoryGame.playCards.forEach((el) => {
     boardHTML += `
       <div class="card" name="${el.english}">
         <div class="face-down" name="${el.english}"></div>
@@ -95,9 +74,10 @@ window.onload = () => {
       `;
   });
 
-  // Add all the divs to the respective HTML sections within the event listener function
-  document.querySelector('#prompt').innerHTML += `<h2>${filteredPrompt}</h2>`
+  // Add all the divs to the respective HTML section within the event listener function
   document.querySelector('#memory-board').innerHTML = boardHTML;
+  document.querySelector('#score').innerHTML = score;
+
 
     // Bind the click event of each element to a function
     document.querySelectorAll('.card').forEach((card) => {
@@ -123,24 +103,28 @@ window.onload = () => {
                     memoryGame.pickedCards[0].classList.add("blocked");
                     memoryGame.pickedCards[1].classList.add("blocked");
                     
-                    //filter data for english name (which will be passed into prompt);
-                    filteredPrompt = memoryGame.cards.filter(el => el.english.includes(memoryGame.pickedCards[0].english));
+                    score++;
+                    document.querySelector('#score').innerHTML = `<h3>Score: ${score}</h3>`;// = reassign; =+ concat
+                    
+                    //show english definition as prompt        
+                    showPrompt = memoryGame.pickedCards[0].getAttribute("name");
+                    document.querySelector('#prompt').innerHTML = `<h3>${showPrompt}</h3>`;
 
                     //check if game is finished  
                     const isFinished = memoryGame.checkIfFinished();
                     if (isFinished) {
-                        alert("Congrats! You're ready to move to the next level!");
+                      setTimeout(() => alert("Congrats! You did it!! 🥳"),3000);
                     }
                     memoryGame.pickedCards = [];
                     return;
                   } else {
 
-                  //if the return from checkIfPair is FALSE, flip them back after 3 seconds
+                  //if the return from checkIfPair is FALSE, flip them back after 2 seconds
                     setTimeout(() => {
                         memoryGame.pickedCards[0].classList.remove("turned");
                         memoryGame.pickedCards[1].classList.remove("turned");
                         memoryGame.pickedCards = [];
-                    }, 3000);
+                    }, 2000);
                 }
             }
 
@@ -148,3 +132,5 @@ window.onload = () => {
         });
     });
 };
+
+//const memoryGame = new MemoryGame(data.slice(5,6))//start index 5, slice 6

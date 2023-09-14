@@ -5,13 +5,16 @@ html {
 body {
     margin: 0;
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    min-width: 100%;
+    width: 99vw;
     min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   #prompt {
     width: 40rem;
-    height: 20rem;
+    height: 10rem;
     padding: 1rem;
     margin: 0rem auto;/*no margin on all 4 sides; auto horizontally centers w/in parent*/
   }
@@ -19,17 +22,19 @@ body {
   #memory-board {
     background: #e1cae2b1;
     width: 82rem;
-    height: 54rem;
+    height: 100%;
     padding: 7rem;
     margin: 0rem auto;
     border-radius: 8.4rem;
     box-shadow: inset 0rem 0rem 2rem -1rem #e2d8e2;
+    
   }
-
-  
   
   .card {
     display: inline-block;
+    /*display: grid;
+    //grid-template-columns: repeat(3);
+    //gap: 1rem;*/
     perspective: 30rem;
     transform-style: preserve-3d;
     position: relative;
@@ -49,7 +54,7 @@ body {
   .card .face-down,
   .card .face-up {
     width: 20rem;
-    height: 20rem;
+    height: 12rem;
     margin: 1rem;
     padding: 2rem;
     border-style: solid;
@@ -82,12 +87,12 @@ body {
     font-size: 7rem;
     text-align: center;
   }
-  
+
   h2 {
     color: rgba(55, 72, 149, 0.605);
     font-family: Whyteinktraptrial, sans-serif;
     font-weight: bolder;
-    font-size: 5rem;
+    font-size: 4rem;
     text-align: center;
   }
 
@@ -95,14 +100,21 @@ body {
     margin-top: 0;
     color: #2c2f6b;
     font-weight: bolder;
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: center;
   }
   
   p {
+    margin-right: 0px;
+    padding: 0;
+    /* display: flex;
+    justify-content: center; */
+    width: 82rem;
+    color: rgba(55, 72, 149, 0.605);
+    font-family: Whyteinktraptrial, sans-serif;
     font-weight: bolder;
-    font-size: 2rem;
-    text-align: center;
+    font-size: 3rem;
+    /* text-align: center; */
   }
  
   /*#card-container {
